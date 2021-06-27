@@ -7,6 +7,7 @@
 #include "Characters/Abilities/AttributeSets/DriftAttributeSetBase.h"
 #include "Characters/Abilities/DriftGameplayAbility.h"
 #include "Characters/Abilities/DriftAbilitySystemComponent.h"
+#include "Net/UnrealNetwork.h"
 // Sets default values
 
 
@@ -37,6 +38,7 @@ UDriftAttributeSetBase* ADriftCharacterBase::GetAttributeSetBase() const
 void ADriftCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
+
 }
 
 UDriftCharacterMovementComponent* ADriftCharacterBase::GetMyMovementComponent() const
@@ -47,6 +49,15 @@ UDriftCharacterMovementComponent* ADriftCharacterBase::GetMyMovementComponent() 
 int32 ADriftCharacterBase::GetAbilityLevel(EGDAbilityInputID AbilityID) const
 {
 	return 1;
+}
+
+
+void ADriftCharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME_CONDITION_NOTIFY(ADriftCharacterBase, TurnRight, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(ADriftCharacterBase, TurnLeft, COND_None, REPNOTIFY_Always);
 }
 
 int32 ADriftCharacterBase::GetCharacterLevel() const

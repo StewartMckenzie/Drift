@@ -113,6 +113,8 @@ void ADriftHeroCharacter::BindASCInput()
 
 }
 
+
+
 // Called when the game starts or when spawned
 void ADriftHeroCharacter::BeginPlay()
 {
@@ -143,6 +145,29 @@ FVector ADriftHeroCharacter::GetStartingCameraBoomLocation()
 	return StartingCameraBoomLocation;
 }
 
+
+void ADriftHeroCharacter::TurningServer_Implementation(float Value)
+{
+	if(GetVelocity().IsZero())
+	{
+
+		if(Value >.3)
+		{
+			TurnRight=true;
+			TurnLeft=false;
+		}else if(Value <-.3)
+		{
+			TurnRight=false;
+			TurnLeft=true;
+		}else
+		{
+			TurnRight=false;
+			TurnLeft=false;
+		}
+	}
+}
+
+
 void ADriftHeroCharacter::LookUp(float Value)
 {
 	AddControllerPitchInput(Value);
@@ -155,7 +180,10 @@ void ADriftHeroCharacter::LookUpRate(float Value)
 
 void ADriftHeroCharacter::Turn(float Value)
 {
+	
 	AddControllerYawInput(Value);
+
+	TurningServer(Value);
 }
 
 void ADriftHeroCharacter::TurnRate(float Value)
@@ -174,10 +202,6 @@ void ADriftHeroCharacter::MoveRight(float Value)
 	AddMovementInput(UKismetMathLibrary::GetRightVector(FRotator(0, GetControlRotation().Yaw, 0)), Value);
 }
 
-
-void ADriftHeroCharacter::Sprint()
-{
-}
 
 void ADriftHeroCharacter::OnRep_PlayerState()
 {
@@ -203,5 +227,6 @@ void ADriftHeroCharacter::OnRep_PlayerState()
 		InitializeAttributes();
 	}
 }
+
 
 
