@@ -33,7 +33,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Drift|Camera")
 	FVector GetStartingCameraBoomLocation();
+	
 
+
+
+	UFUNCTION( Server,Reliable)
+	void TurningServer(float Value);
 	
 	protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Drift|Camera")
@@ -50,6 +55,8 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Drift|Camera")
 	class USpringArmComponent* CameraBoom;
+
+
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Drift|Camera")
 	class UCameraComponent* FollowCamera;
@@ -72,8 +79,6 @@ public:
 	void TurnRate(float Value);
 
 
-	// Gamepad
-	void Sprint();
 	// Mouse + Gamepad
 	void MoveForward(float Value);
 
@@ -83,7 +88,7 @@ public:
 	// Client only
 	virtual void OnRep_PlayerState() override;
 
-	
+
 	// Called from both SetupPlayerInputComponent and OnRep_PlayerState because of a potential race condition where the PlayerController might
 	// call ClientRestart which calls SetupPlayerInputComponent before the PlayerState is repped to the client so the PlayerState would be null in SetupPlayerInputComponent.
 	// Conversely, the PlayerState might be repped before the PlayerController calls ClientRestart so the Actor's InputComponent would be null in OnRep_PlayerState.

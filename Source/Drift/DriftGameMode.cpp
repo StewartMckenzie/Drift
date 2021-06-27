@@ -1,7 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "DriftGameMode.h"
-#include "DriftCharacter.h"
+
 #include "UObject/ConstructorHelpers.h"
 
 ADriftGameMode::ADriftGameMode()

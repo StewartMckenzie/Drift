@@ -30,8 +30,17 @@ public:
 	// Switch on AbilityID to return individual ability levels. Hardcoded to 1 for every ability in this project.
 	UFUNCTION(BlueprintCallable, Category = "Drift|DriftCharacter")
 	virtual int32 GetAbilityLevel(EGDAbilityInputID AbilityID) const;
+	
+	UPROPERTY(Replicated,BlueprintReadOnly)
+	bool TurnRight;
+	
+	UPROPERTY(Replicated, BlueprintReadOnly)
+	bool TurnLeft;
+	
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	
 	UFUNCTION(BlueprintCallable, Category = "Drift|DriftCharacter|Attributes")
 	int32 GetCharacterLevel() const;
 	
