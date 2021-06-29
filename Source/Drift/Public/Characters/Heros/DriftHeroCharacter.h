@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Characters/DriftCharacterBase.h"
+#include "Weapons/DriftWeaponComponent.h"
 #include "DriftHeroCharacter.generated.h"
 
 /**
@@ -33,14 +34,23 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Drift|Camera")
 	FVector GetStartingCameraBoomLocation();
-	
 
+
+	//The class of our weapon
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<ADriftWeaponComponent> MeleeWeaponClass;
+	//A pointer to our actual weapon
+	UPROPERTY()
+	ADriftWeaponComponent* MeleeWeapon;
 
 
 	UFUNCTION( Server,Reliable)
 	void TurningServer(float Value);
 	
 	protected:
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	USkeletalMeshComponent* WeaponComponent;
+	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Drift|Camera")
 	float BaseTurnRate = 45.0f;
 

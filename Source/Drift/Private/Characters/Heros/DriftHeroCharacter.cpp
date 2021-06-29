@@ -119,7 +119,15 @@ void ADriftHeroCharacter::BindASCInput()
 void ADriftHeroCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	//spawn the weapon in world
+	MeleeWeapon = GetWorld()->SpawnActor<ADriftWeaponComponent>(MeleeWeaponClass);
 
+	if (MeleeWeapon) {	//attach it in our right hand
+		MeleeWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("WeaponSocketR"));
+		//claim ownership
+		MeleeWeapon->SetOwner(this);
+	
+	}
 }
 
 
