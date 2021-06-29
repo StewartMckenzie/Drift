@@ -1,6 +1,7 @@
 #ignore assests
 Content/GrruzamSwordPack/*
 Content/Weapon_Pack/*
+Content/PaidAssets/*
 # Visual Studio 2015 user specific files
 .vs/
 
