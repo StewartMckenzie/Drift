@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.26",
+	"EngineAssociation": "5.0EA",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -11,7 +11,7 @@
 			"AdditionalDependencies": [
 				"Engine",
 				"GameplayAbilities",
-				"AIModule"
+				"AIModule","MotionWarping"
 			]
 		}
 	],
@@ -24,6 +24,19 @@
 			"Name": "AGRPRO",
 			"Enabled": false,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/c4f13f7fc2c048d8ad4985ecfbf4f6c6"
+		},
+		{
+			"Name": "Bridge",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Mac",
+				"Linux"
+			]
+		},
+		{
+			"Name": "MotionWarping",
+			"Enabled": true
 		}
 	]
 }
