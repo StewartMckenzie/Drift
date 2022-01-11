@@ -1,5 +1,5 @@
 # Drift
-The goal goal of this project is to create a playable Action Adventure RPG style game in Unreal with multiplayer aspects using the Gameplay Ability System (GAS).
+The goal of this project is to create a playable Action Adventure RPG style game in Unreal with multiplayer aspects using the Gameplay Ability System (GAS).
 For more info on the Game design/Story visit the Milanote board for [Drift](https://app.milanote.com/1Lo7yz1CtfdMcA/drift).
 
 I will be learning multiple skills along the way and hope to document my process and the resources I used to solve issues.
